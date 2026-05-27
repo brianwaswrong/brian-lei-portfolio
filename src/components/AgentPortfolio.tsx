@@ -47,8 +47,13 @@ function AgentMockup({ system }: { system: AgentSystem }) {
 }
 
 export function AgentPortfolio() {
-  const [activeId, setActiveId] = useState(agentSystems[0].id);
-  const activeSystem = agentSystems.find((system) => system.id === activeId) ?? agentSystems[0];
+  const [activeId, setActiveId] = useState<string | null>(null);
+  const [previewId, setPreviewId] = useState<string | null>(null);
+  const activeSystem = activeId
+    ? agentSystems.find((system) => system.id === activeId) ?? null
+    : null;
+  const previewSystem =
+    agentSystems.find((system) => system.id === (previewId ?? activeId)) ?? null;
 
   return (
     <section className="tab-panel agents-panel" id="agents">
@@ -77,6 +82,13 @@ export function AgentPortfolio() {
               role="listitem"
               className={`agent-card-button reveal-up ${activeId === system.id ? 'is-active' : ''}`}
               style={{ '--enter-delay': `${300 + index * 70}ms` } as React.CSSProperties}
+              aria-expanded={activeId === system.id}
+              onMouseEnter={() => setPreviewId(system.id)}
+              onMouseLeave={() => setPreviewId(null)}
+              onPointerEnter={() => setPreviewId(system.id)}
+              onPointerLeave={() => setPreviewId(null)}
+              onFocus={() => setPreviewId(system.id)}
+              onBlur={() => setPreviewId(null)}
               onClick={() => setActiveId(system.id)}
             >
               <span className="agent-card-kicker">{system.eyebrow}</span>
@@ -86,62 +98,77 @@ export function AgentPortfolio() {
           ))}
         </div>
 
-        <div
-          className="agent-story-reveal reveal-up"
-          key={activeSystem.id}
-          style={{ '--enter-delay': '520ms' } as React.CSSProperties}
-        >
-          {activeSystem.id === 'deal-desk' ? (
-            <DealDeskStory />
-          ) : activeSystem.id === 'demo-engine' ? (
-            <DemoCreationStory />
-          ) : activeSystem.id === 'design-engineer' ? (
-            <DesignEngineerStory />
-          ) : activeSystem.id === 'claude-surf' ? (
-            <ClaudeSurfStory />
-          ) : (
-            <article className="agent-detail glass">
-              <div className="agent-detail-top">
-                <div>
-                  <p className="eyebrow">{activeSystem.eyebrow}</p>
-                  <h3>{activeSystem.title}</h3>
+        {previewSystem && !activeSystem ? (
+          <article
+            className="agent-preview glass reveal-up"
+            key={previewSystem.id}
+            style={{ '--enter-delay': '0ms' } as React.CSSProperties}
+          >
+            <p className="eyebrow">Business Problem</p>
+            <h3>{previewSystem.title}</h3>
+            <p>{previewSystem.businessCase}</p>
+            <span>Click to read full system writeup</span>
+          </article>
+        ) : null}
+
+        {activeSystem ? (
+          <div
+            className="agent-story-reveal reveal-up"
+            key={activeSystem.id}
+            style={{ '--enter-delay': '80ms' } as React.CSSProperties}
+          >
+            {activeSystem.id === 'deal-desk' ? (
+              <DealDeskStory />
+            ) : activeSystem.id === 'demo-engine' ? (
+              <DemoCreationStory />
+            ) : activeSystem.id === 'design-engineer' ? (
+              <DesignEngineerStory />
+            ) : activeSystem.id === 'claude-surf' ? (
+              <ClaudeSurfStory />
+            ) : (
+              <article className="agent-detail glass">
+                <div className="agent-detail-top">
+                  <div>
+                    <p className="eyebrow">{activeSystem.eyebrow}</p>
+                    <h3>{activeSystem.title}</h3>
+                  </div>
+                  <div className="agent-tag-row">
+                    {activeSystem.tags.map((tag) => (
+                      <span key={tag}>{tag}</span>
+                    ))}
+                  </div>
                 </div>
-                <div className="agent-tag-row">
-                  {activeSystem.tags.map((tag) => (
-                    <span key={tag}>{tag}</span>
+
+                <AgentMockup system={activeSystem} />
+
+                <div className="agent-detail-grid">
+                  <div>
+                    <h4>Business case</h4>
+                    <p>{activeSystem.businessCase}</p>
+                  </div>
+                  <div>
+                    <h4>Architecture shape</h4>
+                    <p>{activeSystem.architecture}</p>
+                  </div>
+                </div>
+
+                <div className="agent-loop">
+                  {activeSystem.loop.map((step, index) => (
+                    <div className="agent-loop-step" key={step}>
+                      <span>{String(index + 1).padStart(2, '0')}</span>
+                      <p>{step}</p>
+                    </div>
                   ))}
                 </div>
-              </div>
 
-              <AgentMockup system={activeSystem} />
-
-              <div className="agent-detail-grid">
-                <div>
-                  <h4>Business case</h4>
-                  <p>{activeSystem.businessCase}</p>
+                <div className="agent-impact">
+                  <CheckCircle2 size={18} />
+                  <p>{activeSystem.impact}</p>
                 </div>
-                <div>
-                  <h4>Architecture shape</h4>
-                  <p>{activeSystem.architecture}</p>
-                </div>
-              </div>
-
-              <div className="agent-loop">
-                {activeSystem.loop.map((step, index) => (
-                  <div className="agent-loop-step" key={step}>
-                    <span>{String(index + 1).padStart(2, '0')}</span>
-                    <p>{step}</p>
-                  </div>
-                ))}
-              </div>
-
-              <div className="agent-impact">
-                <CheckCircle2 size={18} />
-                <p>{activeSystem.impact}</p>
-              </div>
-            </article>
-          )}
-        </div>
+              </article>
+            )}
+          </div>
+        ) : null}
       </div>
     </section>
   );

@@ -4,10 +4,6 @@ export function Artifacts() {
       <div className="section-head compact-head">
         <p className="eyebrow">Commercial Operator Artifacts</p>
         <h2 className="section-title">Where the next round of proof will live.</h2>
-        <p className="section-copy">
-          Concise artifacts for the model, tooling, and infrastructure companies where
-          commercial strategy has to understand usage, cost, risk, and buyer behavior.
-        </p>
       </div>
 
       <div className="artifact-construction glass">

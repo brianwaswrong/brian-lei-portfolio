@@ -2787,6 +2787,18 @@ button {
   gap: 16px;
 }
 
+.artifact-construction {
+  display: grid;
+  gap: 6px;
+  max-width: 520px;
+  padding: 20px;
+  border-radius: var(--radius);
+}
+
+.artifact-construction p {
+  margin: 0;
+}
+
 .artifact-card {
   display: flex;
   min-height: 360px;

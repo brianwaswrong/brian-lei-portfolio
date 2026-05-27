@@ -274,6 +274,16 @@ button {
   padding: 72px 0 96px;
 }
 
+.reveal-up {
+  animation: revealUp 720ms cubic-bezier(0.2, 0.84, 0.18, 1) both;
+  animation-delay: var(--enter-delay, 0ms);
+  will-change: opacity, transform;
+}
+
+.agent-story-reveal {
+  min-width: 0;
+}
+
 .container {
   width: min(1180px, calc(100vw - 32px));
   max-width: calc(100vw - 32px);
@@ -2781,6 +2791,17 @@ button {
   }
 }
 
+@keyframes revealUp {
+  0% {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .artifact-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -3369,6 +3390,11 @@ button {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .reveal-up {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
   *,
   *::before,
   *::after {

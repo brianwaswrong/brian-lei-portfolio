@@ -17,6 +17,18 @@ export function Header({
   return (
     <>
       <header className="site-header">
+        <button
+          type="button"
+          className="brand-home"
+          onClick={() => onSelect('welcome')}
+          aria-label="Go to Background"
+          title="Brian Lei"
+        >
+          <span className="brand-signature" aria-hidden="true">
+            BL
+          </span>
+        </button>
+
         <nav className="section-tabs" aria-label="Primary navigation">
           {navItems.map((item) => (
             <button

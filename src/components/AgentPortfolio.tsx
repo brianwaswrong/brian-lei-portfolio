@@ -107,7 +107,7 @@ export function AgentPortfolio() {
             <p className="eyebrow">Business Problem</p>
             <h3>{previewSystem.title}</h3>
             <p>{previewSystem.businessCase}</p>
-            <span>Click to read full system writeup</span>
+            <span>Click to read full writeup</span>
           </article>
         ) : null}
 

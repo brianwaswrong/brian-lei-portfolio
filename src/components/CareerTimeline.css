@@ -132,7 +132,7 @@
 }
 
 .journey-legend-line.is-green {
-  background: var(--green);
+  background: var(--arr-green, var(--green));
 }
 
 .journey-legend-line.is-blue {
@@ -188,7 +188,7 @@
 }
 
 .journey-series.is-green {
-  stroke: var(--green);
+  stroke: var(--arr-green, var(--green));
 }
 
 .journey-series.is-blue {
@@ -236,7 +236,7 @@
 
 .journey-series-dot.is-green.is-active {
   border-color: color-mix(in srgb, var(--ink) 58%, transparent);
-  background: var(--green);
+  background: var(--arr-green, var(--green));
 }
 
 .journey-series-dot.is-blue.is-active {
@@ -341,8 +341,8 @@
 }
 
 .journey-graph-metrics em.is-arr {
-  border-color: color-mix(in srgb, var(--green) 65%, rgba(255, 255, 255, 0.16));
-  color: var(--green);
+  border-color: color-mix(in srgb, var(--arr-green, var(--green)) 65%, rgba(255, 255, 255, 0.16));
+  color: var(--arr-green, var(--green));
 }
 
 .journey-graph-metrics em.is-enterprise {

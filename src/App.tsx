@@ -9,27 +9,40 @@ import { navItems, type SectionId } from './data/navigation';
 
 const sectionIds = new Set(navItems.map((item) => item.id));
 
+type SiteSkin = 'editorial' | 'lavender' | 'events';
+
+const skinOptions: Array<{ id: SiteSkin; label: string }> = [
+  { id: 'editorial', label: 'Warm Editorial' },
+  { id: 'lavender', label: 'Soft Lavender' },
+  { id: 'events', label: 'Music / Events' },
+];
+
 function readHashSection(): SectionId {
   const rawHash = window.location.hash.replace('#', '');
   if (rawHash === 'career') return 'welcome';
   return sectionIds.has(rawHash as SectionId) ? (rawHash as SectionId) : 'welcome';
 }
 
-function readPreferredTheme(): 'light' | 'dark' {
-  const stored = window.localStorage.getItem('brian-lei-theme');
-  if (stored === 'light' || stored === 'dark') return stored;
-  return 'dark';
+function readPreferredSkin(): SiteSkin {
+  const stored = window.localStorage.getItem('brian-lei-skin');
+  if (stored === 'editorial' || stored === 'lavender' || stored === 'events') return stored;
+  return 'events';
 }
 
 export default function App() {
   const [activeSection, setActiveSection] = useState<SectionId>(() => readHashSection());
-  const [theme, setTheme] = useState<'light' | 'dark'>(() => readPreferredTheme());
+  const [skin, setSkin] = useState<SiteSkin>(() => readPreferredSkin());
 
   useEffect(() => {
-    document.documentElement.dataset.theme = theme;
-    document.documentElement.classList.toggle('dark', theme === 'dark');
-    window.localStorage.setItem('brian-lei-theme', theme);
-  }, [theme]);
+    document.documentElement.dataset.theme = 'light';
+    document.documentElement.classList.remove('dark');
+    window.localStorage.setItem('brian-lei-theme', 'light');
+  }, []);
+
+  useEffect(() => {
+    document.documentElement.dataset.skin = skin;
+    window.localStorage.setItem('brian-lei-skin', skin);
+  }, [skin]);
 
   useEffect(() => {
     const handleHashChange = () => {
@@ -80,10 +93,20 @@ export default function App() {
       <div className="ambient ambient-right" />
       <Header
         activeSection={activeSection}
-        theme={theme}
         onSelect={selectSection}
-        onToggleTheme={() => setTheme((current) => (current === 'light' ? 'dark' : 'light'))}
       />
+      <div className="skin-switcher" aria-label="Visual style selector">
+        {skinOptions.map((option) => (
+          <button
+            key={option.id}
+            type="button"
+            className={`skin-switch ${skin === option.id ? 'is-active' : ''}`}
+            onClick={() => setSkin(option.id)}
+          >
+            {option.label}
+          </button>
+        ))}
+      </div>
       <main className="main-shell">{activePanel}</main>
       <Analytics />
     </div>

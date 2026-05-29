@@ -193,7 +193,7 @@ export const careerMilestones: CareerMilestone[] = [
     title: 'Building DORI',
     body:
       'Co-founded AI-native startup building loyalty, marketing & commerce tools for small businesses.',
-    takeaway: '6-figure ARR run-rate in 5-mo with 2 FTEs and fleet of agents/skills.',
+    takeaway: '6-figure run-rate in Y1 with 3 person team and fleet of agents.',
     phase: 'independent',
     phaseLabel: 'AI-Native Commercial Systems',
     progress: { enter: 0.93, active: 0.98, exit: 1.04 },

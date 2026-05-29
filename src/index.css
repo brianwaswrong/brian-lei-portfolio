@@ -16,8 +16,10 @@
   --shadow: 0 24px 80px rgba(39, 34, 25, 0.1);
   --accent: #0f8f72;
   --accent-strong: #0b6f5a;
+  --accent-contrast: #fffaf2;
   --accent-soft: #e6f6f1;
   --green: #1f9f68;
+  --arr-green: #789f85;
   --blue: #356fa8;
   --yellow: #e0a21a;
   --white: #ffffff;
@@ -27,6 +29,15 @@
   --nav-glass-highlight: rgba(255, 255, 255, 0.5);
   --nav-control-bg: rgba(255, 255, 255, 0.26);
   --radius: 8px;
+  --font-body: 'Source Sans 3', Inter, ui-sans-serif, system-ui, -apple-system,
+    BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-heading: 'Instrument Serif', Georgia, 'Times New Roman', serif;
+  --font-meta: 'Manrope', Inter, ui-sans-serif, system-ui, -apple-system,
+    BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --wash-one: rgba(184, 101, 120, 0.18);
+  --wash-two: rgba(116, 111, 157, 0.12);
+  --wash-three: rgba(191, 138, 65, 0.1);
+  --wash-four: rgba(255, 250, 242, 0.72);
 }
 
 :root[data-theme='dark'] {
@@ -43,8 +54,10 @@
   --shadow: 0 24px 80px rgba(0, 0, 0, 0.32);
   --accent: #9ae6b4;
   --accent-strong: #d8f7df;
+  --accent-contrast: #1c1216;
   --accent-soft: rgba(154, 230, 180, 0.12);
   --green: #4bd49a;
+  --arr-green: #4bd49a;
   --blue: #7ab8ff;
   --yellow: #f2c14e;
   --nav-glass-bg: rgba(8, 10, 9, 0.3);
@@ -53,12 +66,118 @@
   --nav-control-bg: rgba(255, 255, 255, 0.09);
 }
 
+:root[data-skin='editorial'] {
+  --bg: #f7efe5;
+  --bg-elevated: #fffaf2;
+  --ink: #241b18;
+  --muted: #756861;
+  --soft: #eadbcb;
+  --line: rgba(65, 45, 36, 0.12);
+  --panel: rgba(255, 250, 242, 0.78);
+  --panel-solid: #fffaf2;
+  --panel-border: rgba(89, 61, 48, 0.15);
+  --shadow: 0 24px 72px rgba(82, 55, 42, 0.11);
+  --accent: #b86578;
+  --accent-strong: #84364f;
+  --accent-contrast: #fffaf2;
+  --accent-soft: #f6e4e8;
+  --green: #9d6a75;
+  --arr-green: #789f85;
+  --blue: #746f9d;
+  --yellow: #bf8a41;
+  --dark-panel: #2b201d;
+  --nav-glass-bg: rgba(255, 248, 238, 0.58);
+  --nav-glass-border: rgba(89, 61, 48, 0.14);
+  --nav-glass-highlight: rgba(255, 255, 255, 0.62);
+  --nav-control-bg: rgba(255, 250, 242, 0.36);
+  --font-body: 'Source Sans 3', Inter, ui-sans-serif, system-ui, -apple-system,
+    BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-heading: 'Instrument Serif', Georgia, 'Times New Roman', serif;
+  --font-meta: 'Manrope', Inter, ui-sans-serif, system-ui, -apple-system,
+    BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --wash-one: rgba(184, 101, 120, 0.18);
+  --wash-two: rgba(116, 111, 157, 0.12);
+  --wash-three: rgba(191, 138, 65, 0.1);
+  --wash-four: rgba(255, 250, 242, 0.72);
+}
+
+:root[data-skin='lavender'] {
+  --bg: #fbf4fa;
+  --bg-elevated: #fffafd;
+  --ink: #251a2f;
+  --muted: #71627c;
+  --soft: #eadcf0;
+  --line: rgba(62, 39, 78, 0.12);
+  --panel: rgba(255, 250, 253, 0.78);
+  --panel-solid: #fffafd;
+  --panel-border: rgba(90, 57, 116, 0.14);
+  --shadow: 0 24px 72px rgba(76, 45, 92, 0.11);
+  --accent: #c36b9a;
+  --accent-strong: #934375;
+  --accent-contrast: #fffafd;
+  --accent-soft: #f7e3ef;
+  --green: #a76f99;
+  --arr-green: #789f85;
+  --blue: #7a70bd;
+  --yellow: #c99a55;
+  --dark-panel: #241927;
+  --nav-glass-bg: rgba(255, 248, 253, 0.58);
+  --nav-glass-border: rgba(90, 57, 116, 0.14);
+  --nav-glass-highlight: rgba(255, 255, 255, 0.66);
+  --nav-control-bg: rgba(255, 250, 253, 0.38);
+  --font-body: 'Manrope', Inter, ui-sans-serif, system-ui, -apple-system,
+    BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-heading: 'Fraunces', 'Instrument Serif', Georgia, serif;
+  --font-meta: 'Manrope', Inter, ui-sans-serif, system-ui, -apple-system,
+    BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --wash-one: rgba(195, 107, 154, 0.18);
+  --wash-two: rgba(122, 112, 189, 0.13);
+  --wash-three: rgba(201, 154, 85, 0.08);
+  --wash-four: rgba(255, 250, 253, 0.76);
+}
+
+:root[data-skin='events'] {
+  --bg: #f6eee0;
+  --bg-elevated: #fff7ec;
+  --ink: #241915;
+  --muted: #746359;
+  --soft: #ead8bf;
+  --line: rgba(78, 49, 38, 0.13);
+  --panel: rgba(255, 247, 236, 0.78);
+  --panel-solid: #fff7ec;
+  --panel-border: rgba(100, 61, 43, 0.15);
+  --shadow: 0 24px 72px rgba(89, 55, 34, 0.12);
+  --accent: #bd5960;
+  --accent-strong: #8f313b;
+  --accent-contrast: #fff7ec;
+  --accent-soft: #f4e0dd;
+  --green: #9a7461;
+  --arr-green: #789f85;
+  --blue: #646b9d;
+  --yellow: #c79645;
+  --dark-panel: #291d19;
+  --nav-glass-bg: rgba(255, 247, 236, 0.56);
+  --nav-glass-border: rgba(100, 61, 43, 0.14);
+  --nav-glass-highlight: rgba(255, 255, 255, 0.62);
+  --nav-control-bg: rgba(255, 247, 236, 0.36);
+  --font-body: 'Gabarito', Inter, ui-sans-serif, system-ui, -apple-system,
+    BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-heading: 'Instrument Serif', Georgia, 'Times New Roman', serif;
+  --font-meta: 'Gabarito', Inter, ui-sans-serif, system-ui, -apple-system,
+    BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --wash-one: rgba(189, 89, 96, 0.18);
+  --wash-two: rgba(100, 107, 157, 0.11);
+  --wash-three: rgba(199, 150, 69, 0.12);
+  --wash-four: rgba(255, 247, 236, 0.74);
+}
+
 * {
   box-sizing: border-box;
 }
 
 html {
   min-height: 100%;
+  overflow-y: auto;
   scroll-behavior: smooth;
   width: 100%;
 }
@@ -69,15 +188,28 @@ body {
   min-height: 100vh;
   margin: 0;
   background:
-    radial-gradient(circle at 16% 18%, color-mix(in srgb, var(--accent) 12%, transparent), transparent 34%),
-    radial-gradient(circle at 82% 36%, color-mix(in srgb, var(--blue) 8%, transparent), transparent 32%),
-    linear-gradient(180deg, color-mix(in srgb, var(--bg-elevated) 16%, transparent), transparent 42%),
+    radial-gradient(circle at 16% 18%, var(--wash-one), transparent 34%),
+    radial-gradient(circle at 82% 34%, var(--wash-two), transparent 34%),
+    radial-gradient(circle at 44% 86%, var(--wash-three), transparent 38%),
+    linear-gradient(180deg, var(--wash-four), transparent 46%),
     var(--bg);
+  background-attachment: fixed;
+  background-position:
+    0% 0%,
+    100% 18%,
+    44% 100%,
+    0% 0%,
+    0% 0%;
+  background-size:
+    132% 132%,
+    124% 124%,
+    150% 150%,
+    100% 100%,
+    100% 100%;
   color: var(--ink);
-  font-family:
-    'DM Sans', Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
-    sans-serif;
-  text-rendering: geometricPrecision;
+  font-family: var(--font-body);
+  animation: pageGradientShift 56s ease-in-out infinite alternate;
+  text-rendering: optimizeLegibility;
 }
 
 button,
@@ -94,6 +226,35 @@ button {
   color: inherit;
 }
 
+@keyframes pageGradientShift {
+  0% {
+    background-position:
+      -14% -6%,
+      112% 10%,
+      12% 110%,
+      0% 0%,
+      0% 0%;
+  }
+
+  50% {
+    background-position:
+      46% 26%,
+      46% 2%,
+      98% 82%,
+      0% 0%,
+      0% 0%;
+  }
+
+  100% {
+    background-position:
+      22% 88%,
+      96% 62%,
+      36% 70%,
+      0% 0%,
+      0% 0%;
+  }
+}
+
 .app-shell {
   position: relative;
   width: 100%;
@@ -107,7 +268,8 @@ button {
   z-index: 0;
   pointer-events: none;
   filter: blur(92px);
-  opacity: 0.22;
+  opacity: 0.18;
+  will-change: transform;
 }
 
 .ambient-left {
@@ -116,6 +278,7 @@ button {
   left: -14vw;
   top: 8vh;
   background: color-mix(in srgb, var(--accent) 70%, transparent);
+  animation: ambientPinkSweep 72s ease-in-out infinite alternate;
 }
 
 .ambient-right {
@@ -124,6 +287,43 @@ button {
   right: -10vw;
   top: 36vh;
   background: color-mix(in srgb, var(--blue) 60%, transparent);
+  animation: ambientBlueSweep 82s ease-in-out infinite alternate;
+}
+
+@keyframes ambientPinkSweep {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+
+  38% {
+    transform: translate3d(66vw, 12vh, 0) scale(1.18);
+  }
+
+  72% {
+    transform: translate3d(82vw, 58vh, 0) scale(0.92);
+  }
+
+  100% {
+    transform: translate3d(26vw, 76vh, 0) scale(1.1);
+  }
+}
+
+@keyframes ambientBlueSweep {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+
+  34% {
+    transform: translate3d(-56vw, 28vh, 0) scale(1.12);
+  }
+
+  68% {
+    transform: translate3d(-86vw, -22vh, 0) scale(0.98);
+  }
+
+  100% {
+    transform: translate3d(-30vw, -46vh, 0) scale(1.16);
+  }
 }
 
 .site-header {
@@ -159,7 +359,12 @@ button {
   border-radius: inherit;
   background:
     radial-gradient(circle at 12% 0%, rgba(255, 255, 255, 0.16), transparent 36%),
-    linear-gradient(90deg, rgba(154, 230, 180, 0.08), transparent 34%, rgba(122, 184, 255, 0.06));
+    linear-gradient(
+      90deg,
+      color-mix(in srgb, var(--accent) 8%, transparent),
+      transparent 34%,
+      color-mix(in srgb, var(--blue) 6%, transparent)
+    );
   opacity: 0.74;
 }
 
@@ -210,7 +415,7 @@ button {
 }
 
 .brand-home:hover {
-  border-color: rgba(255, 255, 255, 0.16);
+  border-color: transparent;
   background: transparent;
   color: var(--accent-strong);
   transform: translateY(-1px);
@@ -393,9 +598,10 @@ button {
   display: inline-flex;
   margin: 0 0 14px;
   color: var(--accent-strong);
+  font-family: var(--font-meta);
   font-size: 12px;
   font-weight: 780;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
 }
 
@@ -405,9 +611,8 @@ button {
 .artifact-card h3,
 .contact-card h2 {
   margin: 0;
-  font-family:
-    'Space Grotesk', Inter, ui-sans-serif, system-ui, -apple-system,
-    BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-family: var(--font-heading);
+  font-weight: 500;
   letter-spacing: 0;
 }
 
@@ -461,7 +666,7 @@ button {
 
 .primary-button {
   background: var(--accent);
-  color: #06120d;
+  color: var(--accent-contrast);
   box-shadow: 0 16px 34px color-mix(in srgb, var(--accent) 20%, transparent);
 }
 
@@ -729,9 +934,8 @@ button {
 .agent-preview h3 {
   margin: 0;
   color: var(--ink);
-  font-family:
-    'Space Grotesk', Inter, ui-sans-serif, system-ui, -apple-system,
-    BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-family: var(--font-heading);
+  font-weight: 500;
   font-size: clamp(18px, 1.65vw, 22px);
   line-height: 1.08;
   letter-spacing: 0;
@@ -833,6 +1037,53 @@ button {
   height: 10px;
   border-radius: 50%;
   background: var(--accent);
+}
+
+.skin-switcher {
+  position: fixed;
+  left: 18px;
+  bottom: 18px;
+  z-index: 60;
+  display: inline-flex;
+  gap: 6px;
+  max-width: calc(100vw - 36px);
+  padding: 6px;
+  border: 1px solid var(--nav-glass-border);
+  border-radius: 999px;
+  background:
+    linear-gradient(180deg, var(--nav-glass-highlight), rgba(255, 255, 255, 0.04)),
+    var(--nav-glass-bg);
+  box-shadow: 0 16px 36px rgba(70, 46, 38, 0.12);
+  backdrop-filter: blur(18px) saturate(130%);
+  -webkit-backdrop-filter: blur(18px) saturate(130%);
+}
+
+.skin-switch {
+  min-height: 32px;
+  padding: 0 12px;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+  font-family: var(--font-meta);
+  font-size: 12px;
+  font-weight: 720;
+  letter-spacing: 0;
+  transition:
+    background 160ms ease,
+    color 160ms ease,
+    transform 160ms ease;
+}
+
+.skin-switch:hover {
+  color: var(--ink);
+  transform: translateY(-1px);
+}
+
+.skin-switch.is-active {
+  background: color-mix(in srgb, var(--accent-soft) 72%, transparent);
+  color: var(--accent-strong);
 }
 
 .mockup-row em {
@@ -950,9 +1201,8 @@ button {
 .deal-stage-copy h3,
 .deal-impact h3 {
   margin: 0;
-  font-family:
-    'Space Grotesk', Inter, ui-sans-serif, system-ui, -apple-system,
-    BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-family: var(--font-heading);
+  font-weight: 500;
   letter-spacing: 0;
 }
 
@@ -1535,9 +1785,8 @@ button {
 .demo-overview h3,
 .demo-flow-step h3 {
   margin: 0;
-  font-family:
-    'Space Grotesk', Inter, ui-sans-serif, system-ui, -apple-system,
-    BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-family: var(--font-heading);
+  font-weight: 500;
   letter-spacing: 0;
 }
 
@@ -1768,9 +2017,8 @@ button {
   max-width: 16ch;
   margin: 0;
   color: var(--ink);
-  font-family:
-    'Space Grotesk', Inter, ui-sans-serif, system-ui, -apple-system,
-    BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-family: var(--font-heading);
+  font-weight: 500;
   font-size: clamp(19px, 1.85vw, 24px);
   line-height: 1.04;
   letter-spacing: 0;
@@ -1885,9 +2133,8 @@ button {
 .design-process-copy h3 {
   margin: 0;
   color: var(--ink);
-  font-family:
-    'Space Grotesk', Inter, ui-sans-serif, system-ui, -apple-system,
-    BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-family: var(--font-heading);
+  font-weight: 500;
   font-size: clamp(17px, 1.3vw, 19px);
   line-height: 1.08;
   letter-spacing: 0;
@@ -2403,9 +2650,8 @@ button {
 .surf-architecture h3,
 .surf-impact h3 {
   margin: 0;
-  font-family:
-    'Space Grotesk', Inter, ui-sans-serif, system-ui, -apple-system,
-    BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-family: var(--font-heading);
+  font-weight: 500;
   letter-spacing: 0;
 }
 
@@ -2987,9 +3233,8 @@ button {
 .timeline-next-cta h2 {
   max-width: 760px;
   margin: 0;
-  font-family:
-    'Space Grotesk', Inter, ui-sans-serif, system-ui, -apple-system,
-    BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-family: var(--font-heading);
+  font-weight: 500;
   font-size: clamp(17px, 1.85vw, 22px);
   line-height: 1.08;
 }
@@ -3170,6 +3415,10 @@ button {
 }
 
 @media (max-width: 640px) {
+  body {
+    background-attachment: scroll;
+  }
+
   .main-shell,
   .site-header,
   .container,
@@ -3230,6 +3479,22 @@ button {
   .nav-icon-button {
     width: 34px;
     height: 34px;
+  }
+
+  .skin-switcher {
+    right: 12px;
+    bottom: 12px;
+    left: 12px;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    border-radius: var(--radius);
+  }
+
+  .skin-switch {
+    min-width: 0;
+    padding: 0 6px;
+    font-size: 11px;
+    white-space: nowrap;
   }
 
   .section-tab {
@@ -3501,6 +3766,14 @@ button {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  body {
+    animation: none;
+  }
+
+  .ambient {
+    animation: none;
+  }
+
   .reveal-up {
     opacity: 1 !important;
     transform: none !important;

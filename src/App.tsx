@@ -9,40 +9,22 @@ import { navItems, type SectionId } from './data/navigation';
 
 const sectionIds = new Set(navItems.map((item) => item.id));
 
-type SiteSkin = 'editorial' | 'lavender' | 'events';
-
-const skinOptions: Array<{ id: SiteSkin; label: string }> = [
-  { id: 'editorial', label: 'Warm Editorial' },
-  { id: 'lavender', label: 'Soft Lavender' },
-  { id: 'events', label: 'Music / Events' },
-];
-
 function readHashSection(): SectionId {
   const rawHash = window.location.hash.replace('#', '');
   if (rawHash === 'career') return 'welcome';
   return sectionIds.has(rawHash as SectionId) ? (rawHash as SectionId) : 'welcome';
 }
 
-function readPreferredSkin(): SiteSkin {
-  const stored = window.localStorage.getItem('brian-lei-skin');
-  if (stored === 'editorial' || stored === 'lavender' || stored === 'events') return stored;
-  return 'events';
-}
-
 export default function App() {
   const [activeSection, setActiveSection] = useState<SectionId>(() => readHashSection());
-  const [skin, setSkin] = useState<SiteSkin>(() => readPreferredSkin());
 
   useEffect(() => {
     document.documentElement.dataset.theme = 'light';
+    document.documentElement.dataset.skin = 'events';
     document.documentElement.classList.remove('dark');
     window.localStorage.setItem('brian-lei-theme', 'light');
+    window.localStorage.setItem('brian-lei-skin', 'events');
   }, []);
-
-  useEffect(() => {
-    document.documentElement.dataset.skin = skin;
-    window.localStorage.setItem('brian-lei-skin', skin);
-  }, [skin]);
 
   useEffect(() => {
     const handleHashChange = () => {
@@ -89,24 +71,10 @@ export default function App() {
 
   return (
     <div className="app-shell">
-      <div className="ambient ambient-left" />
-      <div className="ambient ambient-right" />
       <Header
         activeSection={activeSection}
         onSelect={selectSection}
       />
-      <div className="skin-switcher" aria-label="Visual style selector">
-        {skinOptions.map((option) => (
-          <button
-            key={option.id}
-            type="button"
-            className={`skin-switch ${skin === option.id ? 'is-active' : ''}`}
-            onClick={() => setSkin(option.id)}
-          >
-            {option.label}
-          </button>
-        ))}
-      </div>
       <main className="main-shell">{activePanel}</main>
       <Analytics />
     </div>

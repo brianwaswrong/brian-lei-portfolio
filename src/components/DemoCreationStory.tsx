@@ -198,7 +198,7 @@ export function DemoCreationStory() {
       <section className="demo-overview">
         <div>
           <p className="eyebrow">System Design Flow</p>
-          <h3>Four small decisions, one automated demo.</h3>
+          <h3>Three user inputs, one automated demo in &lt;14 minutes</h3>
         </div>
         <DemoFlowVisual />
       </section>
